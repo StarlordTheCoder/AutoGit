@@ -1,8 +1,4 @@
-import os
-from optparse import OptionParser
-from typing import List
-
-from git import Repo, Diff
+from git import Repo
 
 from automation import Automation
 from configurator import Config
@@ -10,8 +6,10 @@ from configurator import Config
 
 class Main:
     def check_untracked_files(self):
+        # TODO use print(self.repo.git.diff(shortstat=True))
+        # TODO Consider added, modified and removed files
+        # TODO Also consider untracked files?
         swag = self.repo.git.diff(numstat=True).split()
-        # TODO also consider untracked files
         i = 0
         while i < len(swag):
             print("Lines added in " + swag[i + 2] + ": " + swag[i])
@@ -25,26 +23,3 @@ class Main:
         self.repo = Repo(repo_path)
 
         Automation(self.check_untracked_files, config.check_interval_seconds)
-
-parser = OptionParser()
-parser.add_option("-r", "--repository",
-                  dest="repository", help="GIT Repository to use")
-parser.add_option("-c", "--config", dest="config",
-                  help="Configuration ID to use", metavar="FILE")
-
-(options, args) = parser.parse_args()
-
-configuration = options.config
-repository = options.repository
-
-if not configuration:
-    # TODO Print available configs
-    configuration = input("Configuration: ")
-
-if not repository:
-    repository = os.getcwd()
-
-print("Config: " + configuration)
-print("Repo: " + repository)
-
-main = Main(int(configuration), repository)

@@ -5,8 +5,9 @@ class Automation:
 
     def __init__(self, action, timeout_in_seconds):
         self.action = action
+        self.timeout_in_seconds = timeout_in_seconds
         self.s = sched.scheduler(time.time, time.sleep)
-        self.s.enter(timeout_in_seconds, 1, self.execute_action)
+        self.s.enter(self.timeout_in_seconds, 1, self.execute_action)
         self.s.run()
 
     def execute_action(self):
@@ -14,4 +15,4 @@ class Automation:
 
         self.action()
 
-        self.s.enter(1, 1, self.execute_action)
+        self.s.enter(self.timeout_in_seconds, 1, self.execute_action)
