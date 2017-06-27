@@ -21,5 +21,5 @@ class Config:
             self.config_name = self.data["settings"][config_id]["config-name"]
             self.auto_commit = self.data["settings"][config_id]["auto-commit"]
             self.commit_message = self.data["settings"][config_id]["commit-message"]
-            self.frequenz = self.data["settings"][config_id]["frequenz"]
+            self.check_interval_seconds = self.data["settings"][config_id]["check-interval-seconds"]
             self.requirements = Requirements(self.data, config_id)

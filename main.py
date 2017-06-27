@@ -24,7 +24,7 @@ class Main:
 
         self.repo = Repo(repo_path)
 
-        Automation(self.check_untracked_files, 2)
+        Automation(self.check_untracked_files, config.check_interval_seconds)
 
 parser = OptionParser()
 parser.add_option("-r", "--repository",
