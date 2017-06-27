@@ -1,0 +1,27 @@
+{
+    "settings": [
+        {
+            "config-name": "default-settings",
+            "auto-commit": false,
+            "commit-message": "Auto commited",
+            "frequenz": 1,
+            "commit-requirements": {
+                "new-files": 1,
+                "deleted-files": 1,
+                "changed-files": 1,
+                "changed-lines": 100
+            }
+        },{
+            "config-name": "custom-settings",
+            "auto-commit": false,
+            "commit-message": "Auto commited",
+            "frequent": 1,
+            "commit-requirements": {
+                "new-files": 1,
+                "deleted-files": 1,
+                "changed-files": 1,
+                "changed-lines": 200
+            }
+      }
+    ]
+}
