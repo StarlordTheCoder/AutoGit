@@ -9,32 +9,20 @@ from configurator import Config
 
 
 class Main:
-    @property
-    def changed_working_dir(self) -> List[Diff]:
-        return self.repo.head.commit.diff(None)
-
     def check_untracked_files(self):
-        for untracked_file in self.repo.untracked_files:
-            print(untracked_file)
-
-        for diff in self.changed_working_dir:
-            print(str(diff.b_path) + " " + diff.change_type)
+        swag = self.repo.git.diff(numstat=True).split()
+        # TODO also consider untracked files
+        i = 0
+        while i < len(swag):
+            print("Lines added in " + swag[i + 2] + ": " + swag[i])
+            print("Lines removed in " + swag[i + 2] + ": " + swag[i + 1])
+            print("")
+            i += 3
 
     def __init__(self, configuration, repo_path):
         config = Config(configuration)
 
         self.repo = Repo(repo_path)
-
-        print(self.repo.git.diff(numstat=True))
-
-        # TODO also consider untracked files
-
-        # TODO Python parsing
-
-        # 1 1 .idea / AutoGit.iml
-        # 1 1 .idea / misc.xml
-        # 91 34.idea / workspace.xml
-        # 2 0 main.py
 
         Automation(self.check_untracked_files, 2)
 
