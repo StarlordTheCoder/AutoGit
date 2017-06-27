@@ -4,24 +4,24 @@
             "config-name": "default-settings",
             "auto-commit": false,
             "commit-message": "Auto committed",
-            "check-interval-seconds": 1,
+            "check-interval-seconds": 10,
             "commit-requirements": {
-                "new-files": 1,
-                "deleted-files": 1,
                 "changed-files": 1,
-                "changed-lines": 100
+                "untracked-files": 1,
+                "added-lines": 200,
+                "removed-lines": 200
             }
         },
         {
             "config-name": "custom-settings",
             "auto-commit": false,
             "commit-message": "Auto committed",
-            "check-interval-seconds": 1,
+            "check-interval-seconds": 2,
             "commit-requirements": {
-                "new-files": 1,
-                "deleted-files": 1,
                 "changed-files": 1,
-                "changed-lines": 200
+                "untracked-files": 1,
+                "added-lines": 200,
+                "removed-lines": 200
             }
       }
     ]

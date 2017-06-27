@@ -6,9 +6,9 @@ from main import Main
 
 parser = OptionParser()
 parser.add_option("-r", "--repository",
-                  dest="repository", help="GIT Repository to use")
+                  dest="repository", help="GIT Repository to use", metavar="FOLDER")
 parser.add_option("-c", "--config", dest="config",
-                  help="Configuration ID to use", metavar="FILE")
+                  help="Configuration ID to use")
 
 (options, args) = parser.parse_args()
 

@@ -4,10 +4,10 @@ import os
 
 class Requirements:
     def __init__(self, data, config_id):
-            self.deleted_files = data["settings"][config_id]["commit-requirements"]["deleted-files"]
             self.changed_files = data["settings"][config_id]["commit-requirements"]["changed-files"]
-            self.new_files = data["settings"][config_id]["commit-requirements"]["new-files"]
-            self.changed_lines = data["settings"][config_id]["commit-requirements"]["changed-lines"]
+            self.untracked_files = data["settings"][config_id]["commit-requirements"]["untracked-files"]
+            self.added_lines = data["settings"][config_id]["commit-requirements"]["added-lines"]
+            self.removed_lines = data["settings"][config_id]["commit-requirements"]["removed-lines"]
 
 
 class Config:
