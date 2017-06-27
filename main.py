@@ -1,7 +1,7 @@
 from git import Repo
 
 from automation import Automation
-from configurator import Config
+from configurator import ConfigManager
 
 
 class Main:
@@ -17,9 +17,9 @@ class Main:
             print("")
             i += 3
 
-    def __init__(self, configuration, repo_path):
-        config = Config(configuration)
+    def __init__(self, config_manager, configuration, repo_path):
+        config = config_manager.get_config(configuration)
 
         self.repo = Repo(repo_path)
 
-        Automation(self.check_untracked_files, config.check_interval_seconds)
+        Automation(self.check_untracked_files, config.interval)
