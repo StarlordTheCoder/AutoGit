@@ -25,6 +25,17 @@ class Main:
 
         self.repo = Repo(repo_path)
 
+        print(self.repo.git.diff(numstat=True))
+
+        # TODO also consider untracked files
+
+        # TODO Python parsing
+
+        # 1 1 .idea / AutoGit.iml
+        # 1 1 .idea / misc.xml
+        # 91 34.idea / workspace.xml
+        # 2 0 main.py
+
         Automation(self.check_untracked_files, 2)
 
 parser = OptionParser()
