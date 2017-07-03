@@ -16,14 +16,22 @@ class Main:
 
             print(split_diff)
 
-            changed_files = int(split_diff[0].replace(" files changed", ""))
-            insertions = int(split_diff[1].replace(" insertions(+)", ""))
-            deletions = int(split_diff[2].replace(" deletions(-)", ""))
-            
-            if changed_files > self.config.requirements.changed_files or insertions > self.config.requirements.added_lines or deletions > self.config.requirements.removed_lines:
+            if len(split_diff) != 3:
+                return
+
+            changed_files = split_diff[0].replace(" files changed", "")
+            insertions = split_diff[1].replace(" insertions(+)", "")
+            deletions = split_diff[2].replace(" deletions(-)", "")
+
+            if changed_files and int(changed_files) > self.config.requirements.changed_files:
+                has_exceeded_limit = True
+            elif insertions and int(insertions) > self.config.requirements.added_lines:
+                has_exceeded_limit = True
+            elif deletions and int(deletions) > self.config.requirements.removed_lines:
                 has_exceeded_limit = True
 
         if has_exceeded_limit:
+            # TODO ask for commit message dialog
             self.repo.git.add(A=True)
             self.repo.git.commit(m=self.config.commit_message)
 

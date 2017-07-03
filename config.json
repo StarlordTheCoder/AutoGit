@@ -23,6 +23,18 @@
                 "added-lines": 200,
                 "removed-lines": 200
             }
+      },
+      {
+            "config-name": "every-thousand-lines",
+            "auto-commit": true,
+            "commit-message": "Wrote another thousand lines",
+            "check-interval-seconds": 2,
+            "commit-requirements": {
+                "changed-files": -1,
+                "untracked-files": -1,
+                "added-lines": 1000,
+                "removed-lines": -1
+            }
       }
     ]
 }
