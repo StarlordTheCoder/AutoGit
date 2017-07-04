@@ -2,7 +2,6 @@
     "settings": [
         {
             "config-name": "default-settings",
-            "auto-commit": false,
             "commit-message": "Auto committed",
             "check-interval-seconds": 10,
             "commit-requirements": {
@@ -14,7 +13,6 @@
         },
         {
             "config-name": "custom-settings",
-            "auto-commit": false,
             "commit-message": "Auto committed",
             "check-interval-seconds": 2,
             "commit-requirements": {
@@ -26,7 +24,6 @@
       },
       {
             "config-name": "every-thousand-lines",
-            "auto-commit": true,
             "commit-message": "Wrote another thousand lines",
             "check-interval-seconds": 2,
             "commit-requirements": {

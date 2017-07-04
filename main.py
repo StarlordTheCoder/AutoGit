@@ -4,7 +4,15 @@ from automation import Automation
 
 
 class Main:
+    """
+    Startet den Automationsprozess
+    """
+
     def check_untracked_files(self):
+        """
+        Überprüft was sich etwas geändert hat und erstellt falls nötig ein Commit.
+        """
+
         has_exceeded_limit = False
 
         if len(self.repo.untracked_files) >= self.config.requirements.untracked_files:
@@ -31,7 +39,7 @@ class Main:
                 has_exceeded_limit = True
 
         if has_exceeded_limit:
-            # TODO ask for commit message dialog
+            # Falls ein konfiguriertes Limit überschritten wurde, erstelle einen Commit
             self.repo.git.add(A=True)
             self.repo.git.commit(m=self.config.commit_message)
 
@@ -40,4 +48,5 @@ class Main:
 
         self.repo = Repo(repo_path)
 
+        # Starten den Timer
         Automation(self.check_untracked_files, self.config.interval)

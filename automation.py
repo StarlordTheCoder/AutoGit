@@ -2,6 +2,9 @@ import sched, time
 
 
 class Automation:
+    """
+    Klasse welches das regelmässige ausführen von einer Aktion erlaubt
+    """
 
     def __init__(self, action, timeout_in_seconds):
         self.action = action
