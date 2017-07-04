@@ -24,12 +24,20 @@ class Main:
 
             print(split_diff)
 
-            if len(split_diff) != 3:
+            if len(split_diff) == 1:
                 return
 
-            changed_files = split_diff[0].replace(" files changed", "")
-            insertions = split_diff[1].replace(" insertions(+)", "")
-            deletions = split_diff[2].replace(" deletions(-)", "")
+            changed_files = split_diff[0].replace(" files changed", "").replace(" file changed", "")
+            if len(split_diff) == 3:
+                insertions = split_diff[1].replace(" insertions(+)", "")
+                deletions = split_diff[2].replace(" deletions(-)", "")
+            else:
+                if "insertion" in split_diff[1]:
+                    insertions = split_diff[1].replace(" insertions(+)", "")
+                    deletions = 0
+                else:
+                    insertions = 0
+                    deletions = split_diff[1].replace(" deletions(-)", "")
 
             if changed_files and int(changed_files) > self.config.requirements.changed_files:
                 has_exceeded_limit = True
